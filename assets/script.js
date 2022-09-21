@@ -17,6 +17,8 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metri
 
 
 // current day weather info.
+
+
 app.get("/", function (req, res) {
     https.get(weatherUrl, function (response) {
         console.log(response.statusCode);
@@ -40,7 +42,6 @@ app.get("/", function (req, res) {
         })
     })
 })
-
 
 
 
