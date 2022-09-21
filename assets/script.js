@@ -15,20 +15,21 @@ var city = "toronto";
 var apiKey = "4b2fa07fb7030ef840b93e9c3ec4f585";
 const weatherUrl = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + city + "&appid=" + apiKey;
 
-    app.get("/", function (req, res) {
-        https.get(weatherUrl, function (response) {
-            console.log(response.statusCode);
 
-            response.on("data", function (data) {
-                var currentWeatherData = JSON.parse(data)
-                var currentCityName = currentWeatherData.name;
-          
+// current day weather info.
+app.get("/", function (req, res) {
+    https.get(weatherUrl, function (response) {
+        console.log(response.statusCode);
 
-                console.log(currentCityName);
-            })
+        response.on("data", function (data) {
+            var currentWeatherData = JSON.parse(data)
+            var currentCityName = currentWeatherData.name;
+
+            console.log(currentCityName);
         })
-        res.send("hi");
     })
+    res.send("hi");
+})
 
 
 
