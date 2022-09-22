@@ -18,17 +18,16 @@ const historyArray = [];
 var formSubmissionHandler = document.querySelector("#submit").addEventListener("click", function (event) {
     event.preventDefault();
     var cityName = formSubmission.value.trim();
-    localStorage.setItem("search", JSON.stringify(cityName));
-    historyArray.push(JSON.parse(localStorage.getItem("search")));
-    alert(historyArray);
+
+
 
     removeDivs();
 
     if (cityName) {
         getCurrentCityData(cityName);
         getFutureCityData(cityName);
-        // saveSearchHistory(cityName);
-        loadSearchHistory();
+        saveSearchHistory(cityName);
+        // loadSearchHistory();
         formSubmission.value = "";
 
     } else {
@@ -36,23 +35,25 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     };
 })
 
-// function to load user search history
-function loadSearchHistory() {
-    var last3Searches = localStorage.getItem("search").length;
-console.log(last3Searches);
-    
-}
+
+
+
 
 // function to add user search to history and buttons
-// function saveSearchHistory(cityName) {
-//     var i = 1;
-// localStorage.setItem("search", cityName);
-// var historyButton = document.createElement("button");
-// var buttonCityName = localStorage.getItem("search", json.stringify());
+function saveSearchHistory(cityName) {
+    localStorage.setItem("search", JSON.stringify(cityName.slice(0,1).toUpperCase() + cityName.slice(1,cityName.length).toLowerCase()));
+    historyArray.push(JSON.parse(localStorage.getItem("search")));
+    // localStorage.clear();
+   console.log(historyArray);
+}
 
-// document.getElementById("History").appendChild(historyButton).innerText = buttonCityName;
-// i++;
-// }
+
+// function to load user search history
+function loadSearchHistory() {
+
+
+
+}
 
 // // function to fetch CURRENT location specific data.
 var getCurrentCityData = function (city) {
@@ -81,7 +82,7 @@ function removeDivs() {
     } else {
         removeCurrentWeatherDiv.remove();
         for (var i = 1; i < 6; i++) {
-            document.getElementById("forecastDiv"+[i]).remove();
+            document.getElementById("forecastDiv" + [i]).remove();
         };
     }
 }
