@@ -50,11 +50,15 @@ var getCurrentCityData = function (city) {
 // function to remove divs (current and forecast weather)
 function removeDivs() {
     var removeCurrentWeatherDiv = document.getElementById("currentDateDiv");
+    var removeForecastWeatherDivs = document.getElementById("forcastDiv" + [i]);
 
     if (!removeCurrentWeatherDiv) {
         console.log("nothing to delete.")
     } else {
         removeCurrentWeatherDiv.remove();
+        for (var i = 1; i < 6; i++) {
+            document.getElementById("forecastDiv"+[i]).remove();
+        };
     }
 }
 
@@ -118,39 +122,39 @@ var getFutureCityData = function (city) {
 
 // function to get forecast weather content
 function getForecastData(data) {
-    for (var i =0; i < 5; i++) { 
-    const forecastDate = data.list[(i+1) * 8 -1].dt_txt;
-    var forecastIcon = data.list[(i+1) * 8 -1].weather[0].icon;
-    var forecastIconImg = "http://openweathermap.org/img/wn/" + forecastIcon + "@2x.png";
-    var forecastWeatherDescription = data.list[(i+1) * 8-1].weather[0].description;
-    var forecastTemp = "Temperature: " + Math.round(data.list[(i+1) * 8-1].main.temp) + " °C";
-    var forecastWind = "Wind speed: " + data.list[(i+1) * 8-1].wind.speed + " m/s";
-    var forecastHumid = "Humidity: " + data.list[(i+1) * 8-1].main.humidity + "%";
+    for (var i = 0; i < 5; i++) {
+        const forecastDate = data.list[(i + 1) * 8 - 1].dt_txt;
+        var forecastIcon = data.list[(i + 1) * 8 - 1].weather[0].icon;
+        var forecastIconImg = "http://openweathermap.org/img/wn/" + forecastIcon + "@2x.png";
+        var forecastWeatherDescription = data.list[(i + 1) * 8 - 1].weather[0].description;
+        var forecastTemp = "Temperature: " + Math.round(data.list[(i + 1) * 8 - 1].main.temp) + " °C";
+        var forecastWind = "Wind speed: " + data.list[(i + 1) * 8 - 1].wind.speed + " m/s";
+        var forecastHumid = "Humidity: " + data.list[(i + 1) * 8 - 1].main.humidity + "%";
 
-    // create div
-    var forecastDiv = document.createElement("div");
-    forecastDiv.setAttribute("id", "forecastDiv" + [i + 1]);
-    var forecastDivId = document.getElementById("forecastDiv" + [i + 1]);
-    document.getElementById("futureWeather").appendChild(forecastDiv);
+        // create div
+        var forecastDiv = document.createElement("div");
+        forecastDiv.setAttribute("id", "forecastDiv" + [i + 1]);
+        var forecastDivId = document.getElementById("forecastDiv" + [i + 1]);
+        document.getElementById("futureWeather").appendChild(forecastDiv);
 
-    // City and Date
-    var h1Container = document.createElement("h1");
-    document.getElementById("forecastDiv"+[i+1]).appendChild(h1Container).innerText = forecastDate;
+        // City and Date
+        var h1Container = document.createElement("h1");
+        document.getElementById("forecastDiv" + [i + 1]).appendChild(h1Container).innerText = forecastDate;
 
-    // Icon
-    var imgEl = document.createElement("img");
-    imgEl.setAttribute("src", forecastIconImg);
-    imgEl.setAttribute("alt", forecastWeatherDescription);
-    document.getElementById("forecastDiv"+[i+1]).appendChild(imgEl);
+        // Icon
+        var imgEl = document.createElement("img");
+        imgEl.setAttribute("src", forecastIconImg);
+        imgEl.setAttribute("alt", forecastWeatherDescription);
+        document.getElementById("forecastDiv" + [i + 1]).appendChild(imgEl);
 
-    // Weather info
-    var forecastTempContainer = document.createElement("p");
-    document.getElementById("forecastDiv"+[i+1]).appendChild(forecastTempContainer).innerText = forecastTemp;
+        // Weather info
+        var forecastTempContainer = document.createElement("p");
+        document.getElementById("forecastDiv" + [i + 1]).appendChild(forecastTempContainer).innerText = forecastTemp;
 
-    var forecastWindContainer = document.createElement("p");
-    document.getElementById("forecastDiv"+[i+1]).appendChild(forecastWindContainer).innerText = forecastWind;
+        var forecastWindContainer = document.createElement("p");
+        document.getElementById("forecastDiv" + [i + 1]).appendChild(forecastWindContainer).innerText = forecastWind;
 
-    var forecastHumidContainer = document.createElement("p");
-    document.getElementById("forecastDiv"+[i+1]).appendChild(forecastHumidContainer).innerText = forecastHumid;
+        var forecastHumidContainer = document.createElement("p");
+        document.getElementById("forecastDiv" + [i + 1]).appendChild(forecastHumidContainer).innerText = forecastHumid;
     }
 }
