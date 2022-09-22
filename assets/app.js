@@ -8,19 +8,14 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-
-
-
 const apiKey = "4b2fa07fb7030ef840b93e9c3ec4f585";
 
-
 var formSubmission = document.getElementsByName("searchCity");
-console.log(formSubmission);
 
 // function to get user's city search
 var formSubmissionHandler = document.querySelector("#submit").addEventListener("click", function(event) {
     event.preventDefault();
-    var cityName = formSubmission.value.trim();
+    var cityName = formSubmission.value;
     console.log(cityName);
 
     // if (cityName) {
@@ -29,7 +24,7 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     // } else {
     //     alert("Please enter a city name");
     // };
-}
+})
 
 
 // // function to fetch current location specific data.
