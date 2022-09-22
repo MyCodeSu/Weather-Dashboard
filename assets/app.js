@@ -27,7 +27,7 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
         getCurrentCityData(cityName);
         getFutureCityData(cityName);
         saveSearchHistory(cityName);
-        // loadSearchHistory();
+        loadSearchHistory();
         formSubmission.value = "";
 
     } else {
@@ -45,6 +45,7 @@ function saveSearchHistory(cityName) {
     historyArray.push(JSON.parse(localStorage.getItem("search")));
     // localStorage.clear();
     console.log(historyArray);
+    console.log(historyArray[historyArray.length - 1]);
 }
 
 
@@ -53,10 +54,10 @@ function loadSearchHistory() {
     var findHistoryButtonContainer = document.getElementById("historyButtonContainer");
     var historyButtonContainer = document.createElement("div");
     historyButtonContainer.setAttribute("id", "historyButtonContainer");
-    // findHistoryButtonContainer.remove();
+
 
     if (findHistoryButtonContainer) {
-
+        findHistoryButtonContainer.remove();
         historyButtonContainer;
         document.getElementById("historyButtons").appendChild(historyButtonContainer);
     } else {
@@ -65,9 +66,18 @@ function loadSearchHistory() {
     }
 
 
-    // for (var i = historyArray.length - 1; i > historyArray.length - 5; i--) {
+    for (var i = historyArray.length - 1; i > historyArray.length - 6; i--) {
+        var historyCityButton = document.createElement("button");
+        historyCityButton.setAttribute("id", "historyButtonLoop"+[i])
+        document.getElementById("historyButtonContainer").appendChild(historyCityButton);
 
-    // }
+        if (historyArray[i] === undefined) {
+            historyCityButton.innerText = "";
+            historyCityButton.classList.add(".invisible");
+        } else {
+            historyCityButton.innerText = historyArray[i];
+        }
+    }
 
 }
 
