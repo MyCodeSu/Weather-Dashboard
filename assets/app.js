@@ -33,22 +33,22 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
 })
 
 //function click on history buttons
-document.getElementById("historyButtons").onclick = function clickHistoryButtons() {
-    for (var i = 0; i < 5; i++) {
-        document.getElementById("historyButtonLoop"[i]).addEventListener("click", function (event) {
-            event.preventDefault();
-            var historicCityName = document.getElementById("historyButtonLoop"[i]).innerText;
+// document.getElementById("historyButtons").onclick = function clickHistoryButtons() {
+//     for (var i = 0; i < 5; i++) {
+//         document.getElementById("historyButtonLoop"+[i]).addEventListener("click", function (event) {
+//             event.preventDefault();
+//             var historicCityName = document.getElementById("historyButtonLoop"+[i]).innerText;
 
-            removeDivs();
-            if (historicCityName) {
-                getCurrentCityData(historicCityName);
-                getFutureCityData(historicCityName);
-                saveSearchHistory(historicCityName);
-                loadSearchHistory();
-            }
-        });
-    }
-}
+//             removeDivs();
+//             if (historicCityName) {
+//                 getCurrentCityData(historicCityName);
+//                 getFutureCityData(historicCityName);
+//                 saveSearchHistory(historicCityName);
+//                 loadSearchHistory();
+//             }
+//         });
+//     }
+// }
 
 
 // function to add user search to history and buttons
@@ -81,7 +81,17 @@ function loadSearchHistory() {
     for (var i = historyArray.length - 1; i > historyArray.length - 6; i--) {
         var historyCityButton = document.createElement("button");
         historyCityButton.setAttribute("id", "historyButtonLoop" + [i])
+        var historicCityName = historyCityButton.innerText;
+
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
+
+        historyCityButton.onclick = function (historicCityName) {
+            // removeDivs();
+            getCurrentCityData(historicCityName);
+            getFutureCityData(historicCityName);
+            // saveSearchHistory(historicCityName);
+            // loadSearchHistory();
+        }
 
         if (historyArray[i] === undefined) {
             historyCityButton.innerText = "";
