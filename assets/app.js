@@ -47,7 +47,7 @@ var getCurrentCityData = function (city) {
 // current date weather content
 function genCurrentWeatherData(data) {
 var cityNameDisplay = data.name;
-// const currentDate = new Date();
+const currentDate = new Date();
 var currentIcon = data.weather[0].icon;
 var currentIconImg = "http://openweathermap.org/img/wn/" + currentIcon + "@2x.png";
 var currentWeatherDescription = data.weather[0].description;
@@ -64,17 +64,15 @@ imgEl.setAttribute("alt", currentWeatherDescription);
 }
 
 // get current weather data
-var currentData = function (data) {
+// var currentData = function (data) {
  
-    genCurrentWeatherData(data);
+//     genCurrentWeatherData(data);
 
 
 
-}
+// }
 
 
-
-getCurrentCityData();
 // function to fetch future location specific data.
 
 var getFutureCityData = function (city) {
