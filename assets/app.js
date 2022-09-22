@@ -21,12 +21,23 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     if (cityName) {
         getCurrentCityData(cityName);
         getFutureCityData(cityName);
+        saveSearchHistory(cityName);
         formSubmission.value = "";
 
     } else {
         alert("Please enter a city name");
     };
 })
+
+// function to add user search to history and buttons
+function saveSearchHistory(cityName) {
+    var i = 1;
+localStorage.setItem("search"[i], cityName);
+var historyButton = document.createElement("button");
+var buttonCityName = localStorage.getItem("search"[i]);
+document.getElementById("History").appendChild(historyButton).innerText = buttonCityName;
+i++;
+}
 
 
 // // function to fetch CURRENT location specific data.
