@@ -18,50 +18,69 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     var cityName = formSubmission.value.trim();
 
 
-//     if (cityName) {
-//         getCurrentCityData(cityName);
-//         formSubmission.value = "";
-//     } else {
-//         alert("Please enter a city name");
-//     };
+    if (cityName) {
+        getCurrentCityData(cityName);
+        formSubmission.value = "";
+    } else {
+        alert("Please enter a city name");
+    };
 })
 
 
 // // function to fetch current location specific data.
-// var getCurrentCityData = function (city) {
-//     var weatherCurrentURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=" + city + "&appid=" + apiKey;
-//     fetch(weatherCurrentURL).then(response => {
-//         if (response.ok) {
-//             response.json().then(function (data) {
-//                 genCurrentWeatherData(data);
-//             })
-//         } else {
-//             alert("Please enter a city name.");
-//         }
-//     })
-//         .catch(error => {
-//             alert(error);
-//         });
-// };
+var getCurrentCityData = function (city) {
+    var weatherCurrentURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=" + city + "&appid=" + apiKey;
+    fetch(weatherCurrentURL).then(response => {
+        if (response.ok) {
+            response.json().then(function (data) {
+                genCurrentWeatherData(data);
+            })
+        } else {
+            alert("Please enter a city name.");
+        }
+    })
+        .catch(error => {
+            alert(error);
+        });
+};
 
 // // current date weather content
-// function genCurrentWeatherData(data) {
-// var cityNameDisplay = data.name;
-// const currentDate = new Date();
-// var currentIcon = data.weather[0].icon;
-// var currentIconImg = "http://openweathermap.org/img/wn/" + currentIcon + "@2x.png";
-// var currentWeatherDescription = data.weather[0].description;
-// var currentTemp = data.main.temp;
-// var currentWind = "Wind speed: " + data.wind.speed + " m/s";
-// var currentHumid = data.main.humidity;
+function genCurrentWeatherData(data) {
+var cityNameDisplay = data.name;
+const currentDate = new Date();
+var currentIcon = data.weather[0].icon;
+var currentIconImg = "http://openweathermap.org/img/wn/" + currentIcon + "@2x.png";
+var currentWeatherDescription = data.weather[0].description;
+var currentTemp = Math.round(data.main.temp)+" °C";
+var currentWind = "Wind speed: " + data.wind.speed + " m/s";
+var currentHumid = data.main.humidity+"%";
 
-// document.createElement("h1").innerText = cityNameDisplay+"   "+currentDate;
-// var imgEl = document.createElement("img");
-// imgEl.setAttribute("src", currentIconImg);
-// imgEl.setAttribute("alt", currentWeatherDescription);
+// create div
+var currentDateDiv = document.createElement("div");
+currentDateDiv.setAttribute("id","currentDateDiv");
+document.getElementById("currentWeather").appendChild(currentDateDiv);
 
+// City and Date
+var h1Container = document.createElement("h1");
+currentDateDiv.appendChild(h1Container).innerText = cityNameDisplay+"   "+currentDate;
 
-// }
+// Icon
+var imgEl = document.createElement("img");
+imgEl.setAttribute("src", currentIconImg);
+imgEl.setAttribute("alt", currentWeatherDescription);
+currentDateDiv.appendChild(imgEl);
+
+// Weather info
+var currentTempContainer = document.createElement("p");
+currentDateDiv.appendChild(currentTempContainer).innerText = currentTemp;
+
+var currentWindContainer = document.createElement("p");
+currentDateDiv.appendChild(currentWindContainer).innerText = currentWind;
+
+var currentHumidContainer = document.createElement("p");
+currentDateDiv.appendChild(currentHumidContainer).innerText = currentHumid;
+
+}
 
 // // get current weather data
 // // var currentData = function (data) {
