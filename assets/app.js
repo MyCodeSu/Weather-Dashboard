@@ -71,7 +71,7 @@ function genCurrentWeatherData(data) {
     var currentIconImg = "http://openweathermap.org/img/wn/" + currentIcon + "@2x.png";
     var currentWeatherDescription = data.weather[0].description;
     var currentTemp = "Temperature: " + Math.round(data.main.temp) + " °C";
-    var currentWind = "Wind speed: " + data.wind.speed + " m/s";
+    var currentWind = "Wind speed: " + Math.round(data.wind.speed) + " m/s";
     var currentHumid = "Humidity: " + data.main.humidity + "%";
 
     // create div
@@ -128,7 +128,7 @@ function getForecastData(data) {
         var forecastIconImg = "http://openweathermap.org/img/wn/" + forecastIcon + "@2x.png";
         var forecastWeatherDescription = data.list[(i + 1) * 8 - 1].weather[0].description;
         var forecastTemp = "Temperature: " + Math.round(data.list[(i + 1) * 8 - 1].main.temp) + " °C";
-        var forecastWind = "Wind speed: " + data.list[(i + 1) * 8 - 1].wind.speed + " m/s";
+        var forecastWind = "Wind speed: " + Math.round(data.list[(i + 1) * 8 - 1].wind.speed) + " m/s";
         var forecastHumid = "Humidity: " + data.list[(i + 1) * 8 - 1].main.humidity + "%";
 
         // create div
