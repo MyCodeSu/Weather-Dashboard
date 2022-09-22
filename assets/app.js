@@ -16,11 +16,12 @@ var formSubmission = document.getElementsByName("searchCity")[0];
 var formSubmissionHandler = document.querySelector("#submit").addEventListener("click", function(event) {
     event.preventDefault();
     var cityName = formSubmission.value.trim();
-
+    removeDivs();
 
     if (cityName) {
         getCurrentCityData(cityName);
         formSubmission.value = "";
+        
     } else {
         alert("Please enter a city name");
     };
@@ -33,7 +34,8 @@ var getCurrentCityData = function (city) {
     fetch(weatherCurrentURL).then(response => {
         if (response.ok) {
             response.json().then(function (data) {
-                genCurrentWeatherData(data);
+               
+               genCurrentWeatherData(data);
             })
         } else {
             alert("Please enter a city name.");
@@ -44,7 +46,19 @@ var getCurrentCityData = function (city) {
         });
 };
 
-// // current date weather content
+// function to remove divs (current and forecast weather)
+function removeDivs() {
+    var removeCurrentWeatherDiv = document.getElementById("currentDateDiv");
+
+    if (!removeCurrentWeatherDiv) {
+    console.log("nothing to delete.")
+    } else {
+    removeCurrentWeatherDiv.remove();
+}
+}
+
+
+// function to get current date weather content
 function genCurrentWeatherData(data) {
 var cityNameDisplay = data.name;
 const currentDate = new Date();
