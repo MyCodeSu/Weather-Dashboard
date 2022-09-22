@@ -8,20 +8,27 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
+
 const apiKey = "4b2fa07fb7030ef840b93e9c3ec4f585";
 
 var formSubmission = document.getElementsByName("searchCity")[0];
+const historyArray = [];
 
 // function to get user's city search
 var formSubmissionHandler = document.querySelector("#submit").addEventListener("click", function (event) {
     event.preventDefault();
     var cityName = formSubmission.value.trim();
+    localStorage.setItem("search", JSON.stringify(cityName));
+    historyArray.push(JSON.parse(localStorage.getItem("search")));
+    alert(historyArray);
+
     removeDivs();
 
     if (cityName) {
         getCurrentCityData(cityName);
         getFutureCityData(cityName);
-        saveSearchHistory(cityName);
+        // saveSearchHistory(cityName);
+        loadSearchHistory();
         formSubmission.value = "";
 
     } else {
@@ -29,16 +36,23 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     };
 })
 
-// function to add user search to history and buttons
-function saveSearchHistory(cityName) {
-    var i = 1;
-localStorage.setItem("search"[i], cityName);
-var historyButton = document.createElement("button");
-var buttonCityName = localStorage.getItem("search"[i]);
-document.getElementById("History").appendChild(historyButton).innerText = buttonCityName;
-i++;
+// function to load user search history
+function loadSearchHistory() {
+    var last3Searches = localStorage.getItem("search").length;
+console.log(last3Searches);
+    
 }
 
+// function to add user search to history and buttons
+// function saveSearchHistory(cityName) {
+//     var i = 1;
+// localStorage.setItem("search", cityName);
+// var historyButton = document.createElement("button");
+// var buttonCityName = localStorage.getItem("search", json.stringify());
+
+// document.getElementById("History").appendChild(historyButton).innerText = buttonCityName;
+// i++;
+// }
 
 // // function to fetch CURRENT location specific data.
 var getCurrentCityData = function (city) {
