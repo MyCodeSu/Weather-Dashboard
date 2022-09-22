@@ -50,7 +50,6 @@ var getCurrentCityData = function (city) {
 // function to remove divs (current and forecast weather)
 function removeDivs() {
     var removeCurrentWeatherDiv = document.getElementById("currentDateDiv");
-    var removeForecastWeatherDivs = document.getElementById("forcastDiv" + [i]);
 
     if (!removeCurrentWeatherDiv) {
         console.log("nothing to delete.")
