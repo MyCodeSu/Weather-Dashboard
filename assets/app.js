@@ -14,72 +14,72 @@
 const apiKey = "4b2fa07fb7030ef840b93e9c3ec4f585";
 
 
-var formSubmission = document.getElementsByName("searchCity")[0];
+var formSubmission = document.getElementsByName("searchCity");
 console.log(formSubmission);
 
 // function to get user's city search
-var formSubmitHandler = function (event) {
+var formSubmissionHandler = document.querySelector("#submit").addEventListener("click", function(event) {
     event.preventDefault();
     var cityName = formSubmission.value.trim();
     console.log(cityName);
 
-    if (cityName) {
-        getCurrentCityData(cityName);
-        formInputEl.value = "";
-    } else {
-        alert("Please enter a city name");
-    };
-};
-
-
-// function to fetch current location specific data.
-var getCurrentCityData = function (city) {
-    var weatherCurrentURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=" + city + "&appid=" + apiKey;
-    fetch(weatherCurrentURL).then(response => {
-        if (response.ok) {
-            response.json().then(function (data) {
-                currentData(data);
-            })
-        } else {
-            alert("Please enter a city name.");
-        }
-    })
-        .catch(error => {
-            alert("Cannot connect to Open Weather. Please try again.");
-        });
-};
-
-// get current weather data
-var currentData = function (data) {
-    var currentDateDiv = querySelector("#currentWeather");
-    var currentCityNameDate = document.createElement(h1);
-
-
-    var cityNameDisplay = data.name;
-    currentDateDiv.append(currentCityNameDate).innerText = cityNameDisplay;
-
+    // if (cityName) {
+    //     getCurrentCityData(cityName);
+    //     formInputEl.value = "";
+    // } else {
+    //     alert("Please enter a city name");
+    // };
 }
 
 
+// // function to fetch current location specific data.
+// var getCurrentCityData = function (city) {
+//     var weatherCurrentURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&q=" + cityName + "&appid=" + apiKey;
+//     fetch(weatherCurrentURL).then(response => {
+//         if (response.ok) {
+//             response.json().then(function (data) {
+//                 currentData(data);
+//             })
+//         } else {
+//             alert("Please enter a city name.");
+//         }
+//     })
+//         .catch(error => {
+//             alert(error);
+//         });
+// };
 
-getCurrentCityData();
-// function to fetch future location specific data.
+// // get current weather data
+// var currentData = function (data) {
+//     var currentDateDiv = querySelector("#currentWeather");
+//     var currentCityNameDate = document.createElement(h1);
 
-var getFutureCityData = function (city) {
-    var weatherForecastURL = "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=" + city + "&appid=" + apiKey;
-    fetch(weatherUrl).then(response => {
-        if (response.ok) {
-            response.json().then(function (data) {
 
-            })
-        } else {
-            alert("Please enter a city name.");
-        }
-    })
-        .catch(error => {
-            alert("Cannot connect to Open Weather. Please try again.");
-        });
-};
+//     var cityNameDisplay = data.name;
+//     currentDateDiv.append(currentCityNameDate).innerText = cityNameDisplay;
+
+// }
+
+
+
+// getCurrentCityData();
+// // function to fetch future location specific data.
+
+// var getFutureCityData = function (city) {
+//     var weatherForecastURL = "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=" + city + "&appid=" + apiKey;
+//     fetch(weatherUrl).then(response => {
+//         if (response.ok) {
+//             response.json().then(function (data) {
+
+//             })
+//         } else {
+//             alert("Please enter a city name.");
+//         }
+//     })
+//         .catch(error => {
+//             alert("Cannot connect to Open Weather. Please try again.");
+//         });
+// };
 
 // city name
 
