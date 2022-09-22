@@ -19,8 +19,6 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     event.preventDefault();
     var cityName = formSubmission.value.trim();
 
-
-
     removeDivs();
 
     if (cityName) {
@@ -29,14 +27,28 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
         saveSearchHistory(cityName);
         loadSearchHistory();
         formSubmission.value = "";
-
     } else {
         alert("Please enter a city name");
     };
 })
 
+//function click on history buttons
+document.getElementById("historyButtons").onclick = function clickHistoryButtons() {
+    for (var i = 0; i < 5; i++) {
+        document.getElementById("historyButtonLoop"[i]).addEventListener("click", function (event) {
+            event.preventDefault();
+            var historicCityName = document.getElementById("historyButtonLoop"[i]).innerText;
 
-
+            removeDivs();
+            if (historicCityName) {
+                getCurrentCityData(historicCityName);
+                getFutureCityData(historicCityName);
+                saveSearchHistory(historicCityName);
+                loadSearchHistory();
+            }
+        });
+    }
+}
 
 
 // function to add user search to history and buttons
@@ -68,7 +80,7 @@ function loadSearchHistory() {
 
     for (var i = historyArray.length - 1; i > historyArray.length - 6; i--) {
         var historyCityButton = document.createElement("button");
-        historyCityButton.setAttribute("id", "historyButtonLoop"+[i])
+        historyCityButton.setAttribute("id", "historyButtonLoop" + [i])
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
 
         if (historyArray[i] === undefined) {
