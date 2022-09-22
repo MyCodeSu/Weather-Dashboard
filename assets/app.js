@@ -41,17 +41,33 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
 
 // function to add user search to history and buttons
 function saveSearchHistory(cityName) {
-    localStorage.setItem("search", JSON.stringify(cityName.slice(0,1).toUpperCase() + cityName.slice(1,cityName.length).toLowerCase()));
+    localStorage.setItem("search", JSON.stringify(cityName.slice(0, 1).toUpperCase() + cityName.slice(1, cityName.length).toLowerCase()));
     historyArray.push(JSON.parse(localStorage.getItem("search")));
     // localStorage.clear();
-   console.log(historyArray);
+    console.log(historyArray);
 }
 
 
 // function to load user search history
 function loadSearchHistory() {
+    var findHistoryButtonContainer = document.getElementById("historyButtonContainer");
+    var historyButtonContainer = document.createElement("div");
+    historyButtonContainer.setAttribute("id", "historyButtonContainer");
+    // findHistoryButtonContainer.remove();
+
+    if (findHistoryButtonContainer) {
+
+        historyButtonContainer;
+        document.getElementById("historyButtons").appendChild(historyButtonContainer);
+    } else {
+        historyButtonContainer;
+        document.getElementById("historyButtons").appendChild(historyButtonContainer);
+    }
 
 
+    // for (var i = historyArray.length - 1; i > historyArray.length - 5; i--) {
+
+    // }
 
 }
 
