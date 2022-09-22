@@ -61,6 +61,7 @@ function saveSearchHistory(cityName) {
 }
 
 
+
 // function to load user search history
 function loadSearchHistory() {
     var findHistoryButtonContainer = document.getElementById("historyButtonContainer");
@@ -80,18 +81,10 @@ function loadSearchHistory() {
 
     for (var i = historyArray.length - 1; i > historyArray.length - 6; i--) {
         var historyCityButton = document.createElement("button");
-        historyCityButton.setAttribute("id", "historyButtonLoop" + [i])
+        historyCityButton.setAttribute("class", "historyButtonLoop" + [i])
         var historicCityName = historyCityButton.innerText;
 
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
-
-        historyCityButton.onclick = function (historicCityName) {
-            // removeDivs();
-            getCurrentCityData(historicCityName);
-            getFutureCityData(historicCityName);
-            // saveSearchHistory(historicCityName);
-            // loadSearchHistory();
-        }
 
         if (historyArray[i] === undefined) {
             historyCityButton.innerText = "";
@@ -99,6 +92,13 @@ function loadSearchHistory() {
         } else {
             historyCityButton.innerText = historyArray[i];
         }
+    }
+
+    // function to search with button value
+    for (var n = 0; n < 5; n++) {
+        document.querySelectorAll(".historyButtonLoop")[n].addEventListener("click", function () {
+            alert("click");
+        })
     }
 
 }
