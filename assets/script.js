@@ -8,8 +8,7 @@
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 
-const express = require("express");
-const app = express();
+
 const https = require("https");
 var city = "toronto";
 var apiKey = "4b2fa07fb7030ef840b93e9c3ec4f585";
@@ -18,6 +17,7 @@ const weatherUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metri
 
 // current day weather info.
 
+var currentWeather = function() {
 
 app.get("/", function (req, res) {
     https.get(weatherUrl, function (response) {
@@ -42,8 +42,9 @@ app.get("/", function (req, res) {
         })
     })
 })
+}
 
-
+console.log(current)
 
 app.listen(3000, function () {
     console.log("Server is running on port 3000.");
