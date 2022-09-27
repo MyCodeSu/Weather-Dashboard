@@ -81,7 +81,8 @@ function loadSearchHistory() {
 
     for (var i = historyArray.length - 1; i > historyArray.length - 6; i--) {
         var historyCityButton = document.createElement("button");
-        historyCityButton.setAttribute("class", "historyButtonLoop" + [i])
+        historyCityButton.setAttribute("id", "historyButtonLoop" + [i]);
+        historyCityButton.setAttribute("class", "historyBtn");
         var historicCityName = historyCityButton.innerText;
 
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
