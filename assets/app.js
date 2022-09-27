@@ -93,15 +93,15 @@ function loadSearchHistory() {
             historyCityButton.innerText = historyArray[i];
         }
     }
-
-    // function to search with button value
-    for (var n = 0; n < 5; n++) {
-        document.querySelectorAll(".historyButtonLoop")[n].addEventListener("click", function () {
-            alert("click");
-        })
-    }
-
 }
+
+// function to search with button value
+// for (var n = 0; n < 5; n++) {
+//     document.querySelectorAll(".historyButtonLoop")[n].addEventListener("click", function () {
+//         alert("click");
+//     })
+// }
+
 
 // // function to fetch CURRENT location specific data.
 var getCurrentCityData = function (city) {
@@ -207,6 +207,7 @@ function getForecastData(data) {
         // create div
         var forecastDiv = document.createElement("div");
         forecastDiv.setAttribute("id", "forecastDiv" + [i + 1]);
+        forecastDiv.setAttribute("class", "forecast");
         var forecastDivId = document.getElementById("forecastDiv" + [i + 1]);
         document.getElementById("futureWeather").appendChild(forecastDiv);
 

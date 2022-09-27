@@ -14,7 +14,7 @@
         <h1>Weather Dashboard</h1>
     </header>
     <main>
-        <aside id="Search-History">
+        <aside class="search" id="Search-History">
             <div id="Search">
                 <h3>Search for a City:</h3>
                 <form action="Search for location">
@@ -25,15 +25,19 @@
             <div id="historyButtons">
 
             </div>
-            <section id="currentWeather">
 
-            </section>
-            <section id="futureWeather">
-                <h3>5-Day Forecast:</h3>
-
-            </section>
         </aside>
+        <section class="current"  id="currentWeather">
+
+        </section>
+        <section class="future" id="futureWeather">
+            <h3>5-Day Forecast:</h3>
+
+        </section>
+
     </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/app.js"></script>
 </body>
 
