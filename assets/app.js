@@ -153,8 +153,8 @@ function genCurrentWeatherData(data) {
     document.getElementById("currentWeather").appendChild(currentDateDiv);
 
     // City and Date
-    var h1Container = document.createElement("h1");
-    currentDateDiv.appendChild(h1Container).innerText = cityNameDisplay + "   " + currentDate;
+    var h2Container = document.createElement("h2");
+    currentDateDiv.appendChild(h2Container).innerText = cityNameDisplay + "   " + currentDate;
 
     // Icon
     var imgEl = document.createElement("img");
@@ -212,8 +212,8 @@ function getForecastData(data) {
         document.getElementById("futureWeather").appendChild(forecastDiv);
 
         // City and Date
-        var h1Container = document.createElement("h1");
-        document.getElementById("forecastDiv" + [i + 1]).appendChild(h1Container).innerText = forecastDate;
+        var h3Container = document.createElement("h3");
+        document.getElementById("forecastDiv" + [i + 1]).appendChild(h3Container).innerText = forecastDate;
 
         // Icon
         var imgEl = document.createElement("img");

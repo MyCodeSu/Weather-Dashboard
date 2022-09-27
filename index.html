@@ -14,24 +14,32 @@
         <h1>Weather Dashboard</h1>
     </header>
     <main>
-        <aside class="search" id="Search-History">
-            <div id="Search">
-                <h3>Search for a City:</h3>
-                <form action="Search for location">
-                    <input id="searchCity" type="text" placeholder="Search for a City..." name="searchCity">
-                    <button id="submit" type="submit">Search</button>
-                </form>
+        <div class="searchAndCurrent">
+            <div class="search">
+                <aside id="Search-History">
+                    <div id="Search">
+                        <h3>Search for a City:</h3>
+                        <form action="Search for location">
+                            <input id="searchCity" type="text" placeholder="Search for a City..." name="searchCity">
+                            <button id="submit" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <div id="historyButtons">
+
+                    </div>
+
+                </aside>
             </div>
-            <div id="historyButtons">
 
-            </div>
+            <section class="current" id="currentWeather">
 
-        </aside>
-        <section class="current"  id="currentWeather">
+            </section>
+        </div>
 
-        </section>
         <section class="future" id="futureWeather">
-            <h3>5-Day Forecast:</h3>
+            <div class="forecastTitle">
+                <h2>5-Day Forecast:</h2>
+            </div>
 
         </section>
 
