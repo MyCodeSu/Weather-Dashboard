@@ -12,7 +12,7 @@
 const apiKey = "4b2fa07fb7030ef840b93e9c3ec4f585";
 
 var formSubmission = document.getElementsByName("searchCity")[0];
-var historyArray = ["toronto", "london"];
+var historyArray = [];
 var localGetArray = [];
 
 // function to get user's city search
@@ -33,10 +33,10 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     };
 })
 
-var historyButtonHandler = document.querySelector(".historyBtn").addEventListener("click", function (event) {
-    console.log(this);
+// var historyButtonHandler = document.querySelector(".historyBtn").addEventListener("click", function (event) {
+//     console.log(this.id);
 
-})
+// })
 
 //function click on history buttons
 // document.getElementById("historyButtons").onclick = function clickHistoryButtons() {
@@ -89,11 +89,14 @@ function loadSearchHistory() {
     }
 
 
-    for (var i = historyArray.length - 1; i > historyArray.length - 6; i--) {
+    let historyMax = (historyArray.length-5 > 0) ? historyArray.length-5 : 0;
+    for(i = historyArray.length-1; i > 0 || i == historyMax; i--) {
         var historyCityButton = document.createElement("button");
-        var historicCityName = historyCityButton.innerText;
+        var historicCityName = historyArray[i];
         historyCityButton.setAttribute("id", "historyButtonLoop_" + historicCityName);
         historyCityButton.setAttribute("class", "historyBtn");
+        // historyCityButton.setAttribute("onclick", )
+
 
 
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
