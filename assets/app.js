@@ -33,30 +33,6 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     };
 })
 
-// var historyButtonHandler = document.querySelector(".historyBtn").addEventListener("click", function (event) {
-//     console.log(this.id);
-
-// })
-
-//function click on history buttons
-// document.getElementById("historyButtons").onclick = function clickHistoryButtons() {
-//     for (var i = 0; i < 5; i++) {
-//         document.getElementById("historyButtonLoop"+[i]).addEventListener("click", function (event) {
-//             event.preventDefault();
-//             var historicCityName = document.getElementById("historyButtonLoop"+[i]).innerText;
-
-//             removeDivs();
-//             if (historicCityName) {
-//                 getCurrentCityData(historicCityName);
-//                 getFutureCityData(historicCityName);
-//                 saveSearchHistory(historicCityName);
-//                 loadSearchHistory();
-//             }
-//         });
-//     }
-// }
-
-
 // function to add user search to history and buttons
 function saveSearchHistory(cityName) {
 
@@ -69,8 +45,6 @@ function saveSearchHistory(cityName) {
     localStorage.setItem("search", JSON.stringify(historyArray));
     // localStorage.clear();
 }
-
-
 
 // function to load user search history
 function loadSearchHistory() {
@@ -117,19 +91,6 @@ function loadSearchHistory() {
         }
     }
 }
-
-
-
-// function to search with button value
-// for (var n = 0; n < 5; n++) {
-//     document.querySelectorAll(".historyButtonLoop")[n].addEventListener("click", function () {
-//         alert("click");
-//     })
-// }
-
-// document.getElementById("historyButtonContainer").addEventListener("click", function (event) {
-
-// })
 
 
 // // function to fetch CURRENT location specific data.
