@@ -12,7 +12,8 @@
 const apiKey = "4b2fa07fb7030ef840b93e9c3ec4f585";
 
 var formSubmission = document.getElementsByName("searchCity")[0];
-const historyArray = [];
+var historyArray = ["toronto", "london"];
+var localGetArray = [];
 
 // function to get user's city search
 var formSubmissionHandler = document.querySelector("#submit").addEventListener("click", function (event) {
@@ -30,6 +31,11 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
     } else {
         alert("Please enter a city name");
     };
+})
+
+var historyButtonHandler = document.querySelector(".historyBtn").addEventListener("click", function (event) {
+    console.log(this);
+
 })
 
 //function click on history buttons
@@ -53,11 +59,15 @@ var formSubmissionHandler = document.querySelector("#submit").addEventListener("
 
 // function to add user search to history and buttons
 function saveSearchHistory(cityName) {
-    localStorage.setItem("search", JSON.stringify(cityName.slice(0, 1).toUpperCase() + cityName.slice(1, cityName.length).toLowerCase()));
-    historyArray.push(JSON.parse(localStorage.getItem("search")));
+
+    if (localStorage.getItem("search")) {
+        historyArray = JSON.parse(localStorage.getItem("search"));
+    }
+
+    historyArray.push(cityName.slice(0, 1).toUpperCase() + cityName.slice(1, cityName.length).toLowerCase());
+
+    localStorage.setItem("search", JSON.stringify(historyArray));
     // localStorage.clear();
-    console.log(historyArray);
-    console.log(historyArray[historyArray.length - 1]);
 }
 
 
@@ -81,9 +91,10 @@ function loadSearchHistory() {
 
     for (var i = historyArray.length - 1; i > historyArray.length - 6; i--) {
         var historyCityButton = document.createElement("button");
-        historyCityButton.setAttribute("id", "historyButtonLoop" + [i]);
-        historyCityButton.setAttribute("class", "historyBtn");
         var historicCityName = historyCityButton.innerText;
+        historyCityButton.setAttribute("id", "historyButtonLoop_" + historicCityName);
+        historyCityButton.setAttribute("class", "historyBtn");
+
 
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
 
@@ -96,12 +107,18 @@ function loadSearchHistory() {
     }
 }
 
+
+
 // function to search with button value
 // for (var n = 0; n < 5; n++) {
 //     document.querySelectorAll(".historyButtonLoop")[n].addEventListener("click", function () {
 //         alert("click");
 //     })
 // }
+
+// document.getElementById("historyButtonContainer").addEventListener("click", function (event) {
+
+// })
 
 
 // // function to fetch CURRENT location specific data.
@@ -233,3 +250,6 @@ function getForecastData(data) {
         document.getElementById("forecastDiv" + [i + 1]).appendChild(forecastHumidContainer).innerText = forecastHumid;
     }
 }
+
+
+
