@@ -97,15 +97,11 @@ function loadSearchHistory() {
         historyCityButton.setAttribute("class", "historyBtn");
 
 
-
-        // historyCityButton.onclick = function () {removeDivs(); getCurrentCityData(historicCityName); getFutureCityData(historicCityName); }
-
-
-
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
 
         var historicCityID = document.getElementById("historyButtonLoop_" + historicCityName);
 
+        // function to get current and forecast weather data based on historic searches. 
         document.getElementById("historyButtonLoop_" + historicCityName).addEventListener("click", function (event) {
            let cityClick = event.path[0].getAttribute('id').split('_');
             removeDivs();
