@@ -88,14 +88,17 @@ function loadSearchHistory() {
         document.getElementById("historyButtons").appendChild(historyButtonContainer);
     }
 
-
-    let historyMax = (historyArray.length-5 > 0) ? historyArray.length-5 : 0;
-    for(i = historyArray.length-1; i > 0 || i == historyMax; i--) {
+    // friend assisted with teaching me ternary function.
+    let historyMax = (historyArray.length - 5 > 0) ? historyArray.length - 5 : 0;
+    for (i = historyArray.length - 1; i >= historyMax; i--) {
         var historyCityButton = document.createElement("button");
         var historicCityName = historyArray[i];
         historyCityButton.setAttribute("id", "historyButtonLoop_" + historicCityName);
         historyCityButton.setAttribute("class", "historyBtn");
-        // historyCityButton.setAttribute("onclick", )
+
+
+
+        historyCityButton.onclick = function () {removeDivs(); getCurrentCityData(historicCityName); getFutureCityData(historicCityName); }
 
 
 
