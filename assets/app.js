@@ -77,7 +77,7 @@ function loadSearchHistory() {
 
         // function to get current and forecast weather data based on historic searches. 
         document.getElementById("historyButtonLoop_" + historicCityName).addEventListener("click", function (event) {
-           let cityClick = event.path[0].getAttribute('id').split('_');
+            let cityClick = event.path[0].getAttribute('id').split('_');
             removeDivs();
             getCurrentCityData(cityClick[1]);
             getFutureCityData(cityClick[1]);
