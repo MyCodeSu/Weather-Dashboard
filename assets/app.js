@@ -168,7 +168,7 @@ function removeDivs() {
 // function to get current date weather content
 function genCurrentWeatherData(data) {
     var cityNameDisplay = data.name;
-    const currentDate = new Date();
+    const currentDate = dayjs(new Date()).format("	MMMM D, YYYY");
     var currentIcon = data.weather[0].icon;
     var currentIconImg = "http://openweathermap.org/img/wn/" + currentIcon + "@2x.png";
     var currentWeatherDescription = data.weather[0].description;
@@ -183,7 +183,8 @@ function genCurrentWeatherData(data) {
 
     // City and Date
     var h2Container = document.createElement("h2");
-    currentDateDiv.appendChild(h2Container).innerText = cityNameDisplay + "   " + currentDate;
+    currentDateDiv.appendChild(h2Container).innerText = `${cityNameDisplay}
+    ${currentDate}`;
 
     // Icon
     var imgEl = document.createElement("img");
@@ -242,7 +243,7 @@ function getForecastData(data) {
 
         // City and Date
         var h3Container = document.createElement("h3");
-        document.getElementById("forecastDiv" + [i + 1]).appendChild(h3Container).innerText = forecastDate;
+        document.getElementById("forecastDiv" + [i + 1]).appendChild(h3Container).innerText = dayjs(forecastDate).format("	MMMM D, YYYY");
 
         // Icon
         var imgEl = document.createElement("img");
