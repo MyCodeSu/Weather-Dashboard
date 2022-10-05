@@ -12,7 +12,7 @@ Using APIs, this application gets data from the Open Weather Map API and respond
 
 ## Deployed Link:
 
-
+https://mycodesu.github.io/Weather-Dashboard/
 
 
 ### License
