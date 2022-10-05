@@ -98,11 +98,20 @@ function loadSearchHistory() {
 
 
 
-        historyCityButton.onclick = function () {removeDivs(); getCurrentCityData(historicCityName); getFutureCityData(historicCityName); }
+        // historyCityButton.onclick = function () {removeDivs(); getCurrentCityData(historicCityName); getFutureCityData(historicCityName); }
 
 
 
         document.getElementById("historyButtonContainer").appendChild(historyCityButton);
+
+        var historicCityID = document.getElementById("historyButtonLoop_" + historicCityName);
+
+        document.getElementById("historyButtonLoop_" + historicCityName).addEventListener("click", function (event) {
+           let cityClick = event.path[0].getAttribute('id').split('_');
+            removeDivs();
+            getCurrentCityData(cityClick[1]);
+            getFutureCityData(cityClick[1]);
+        })
 
         if (historyArray[i] === undefined) {
             historyCityButton.innerText = "";
